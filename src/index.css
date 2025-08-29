@@ -1,6 +1,6 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Fontdiner+Swanky&family=Funnel+Display:wght@300..800&family=Kaushan+Script&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Autour+One&family=Fontdiner+Swanky&family=Funnel+Display:wght@300..800&family=Kaushan+Script&display=swap');
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -21,4 +21,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+
+.color-red {
+  color: rgb(255, 39, 39);
 }
