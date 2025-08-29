@@ -1,6 +1,6 @@
 
 import { useState } from 'react'
-
+import Gamespace from './components/Gamespace';
 import './App.css'
 
 function App() {
@@ -30,6 +30,8 @@ function App() {
         <div><span className='color-red'>Score:</span>  {score}</div>
         <div><span className='color-red'>Best Score:</span> {bestScore} </div>
       </section>
+
+      <Gamespace/>
     </>
   )
 }
