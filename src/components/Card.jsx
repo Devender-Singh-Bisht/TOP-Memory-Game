@@ -1,16 +1,17 @@
 
 import "../styles/Card.css"
+import pokeball from "../assets/pokeball.png"
 
 
 
-export default function Card() {
+export default function Card({name, src}) {
 
     return (
         <div className="card">
             <div className="card-img-container">
-                <img src="" alt="" />
+                <img src={(!src)?(pokeball):(src)} alt={name} />
             </div>
-            <div className="card-name">Hello</div>
+            <div className="card-name">{(!name)?("Loading"):(name.toUpperCase())}</div>
         </div>
     );
 }

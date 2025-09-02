@@ -1,0 +1,14 @@
+
+.game-space {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    width: 95%;
+    min-height: 90vh;
+    padding: 20px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}

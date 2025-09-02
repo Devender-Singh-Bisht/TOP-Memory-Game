@@ -1,0 +1,35 @@
+
+
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    flex: 0 1 auto;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 20px;
+    background-color: white;
+}
+
+.card-img-container {
+    flex: 1 0 auto;
+    text-align: center;
+}
+
+.card-img-container img {
+    width: 200px;
+    height: 160px;
+}
+
+.card-name {
+    background-color: rgb(255, 42, 42);
+    color: white;
+    font-size: 1.5rem;
+    text-align: center;
+    border-radius: 8px;
+}
+
+
+
+
+
