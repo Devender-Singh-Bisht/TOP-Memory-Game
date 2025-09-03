@@ -10,7 +10,7 @@ function App() {
   const [bestScore, setBestScore] = useState(0);
 
   const changeLevel = (event)=> {
-    setLevel(event.target.value);
+    setLevel(Number(event.target.value));
   }
 
   return (
@@ -31,7 +31,7 @@ function App() {
         <div><span className='color-red'>Best Score:</span> {bestScore} </div>
       </section>
 
-      <Gamespace score={score} bestScore={bestScore} setScore={setScore} setBestScore={setBestScore}/>
+      <Gamespace level={level} score={score} bestScore={bestScore} setScore={setScore} setBestScore={setBestScore}/>
     </>
   )
 }
