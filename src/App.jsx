@@ -5,7 +5,7 @@ import './App.css'
 
 function App() {
 
-  const [level, setLevel] = useState("easy");
+  const [level, setLevel] = useState(8);
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
 
@@ -19,9 +19,9 @@ function App() {
         <h1><span className='color-red'>Poke</span><span>Game</span></h1>
         <div className='level'>
           <select id="level" name="level" value={level} onChange={(event)=> changeLevel(event)}>
-            <option value="easy">Easy</option>
-            <option value="medium">Medium</option>
-            <option value="hard">Hard</option>
+            <option value={8}>Easy</option>
+            <option value={12}>Medium</option>
+            <option value={16}>Hard</option>
           </select>
         </div>
       </section>
