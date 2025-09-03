@@ -6,19 +6,15 @@ import "../styles/Gamespace.css";
 
 
 
-export default function Gamespace() {
+export default function Gamespace({score, bestScore, setScore, setBestScore}) {
 
     const [pokemonsData, setPokemonsData] = useState([]);
 
     const dummyCards = Array(10).fill({});
     const [cards, setCards] = useState(dummyCards);
+    const [clickedCards, setClickedCards] = useState([]);
 
-
-    const shuffleCards = () => {
-        let newCards = getRandomCards(cards, 10);
-        setCards(newCards)
-    }
-
+    
     const getRandomCards = (pokemonsData, n) => {
         let max = pokemonsData.length;
         if (max === 0) {
@@ -32,13 +28,34 @@ export default function Gamespace() {
                 randomNumbers.push(randomNumber);
             }
         }
-
+        
         let cardsData = [];
         randomNumbers.forEach((i) => cardsData.push(pokemonsData[i]));
-
+        
         return cardsData;
     }
+    
+    const shuffleCards = () => {
+        let newCards = getRandomCards(cards, 10);
+        setCards(newCards)
+    }
 
+    const handleCardClick = (id) => {
+        if (clickedCards.includes(id)) {
+            let newCards = getRandomCards(pokemonsData, 10);
+            setCards(newCards);
+            setClickedCards([]);
+            setScore(0);
+            if (score > bestScore) {
+                setBestScore(score);
+            }
+            return
+        }
+
+        shuffleCards();
+        setClickedCards(prevClicked => [...prevClicked, id]);
+        setScore(prevScore => prevScore + 1);
+    }
 
     useEffect(() => {
 
@@ -68,7 +85,7 @@ export default function Gamespace() {
         </div>
         ):
         (<section className="game-space">
-            {cards.map((obj, index) => <Card key={(obj["name"])?(obj["name"]):(index)} name={obj["name"]} src={obj["src"]} shuffleCards={shuffleCards} />)}
+            {cards.map((obj, index) => <Card key={(obj["name"])?(obj["name"]):(index)} name={obj["name"]} src={obj["src"]} handleCardClick={handleCardClick}/>)}
         </section>)
     );
 }

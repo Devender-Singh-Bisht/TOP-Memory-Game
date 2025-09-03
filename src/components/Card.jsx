@@ -4,14 +4,14 @@ import pokeball from "../assets/pokeball.png"
 
 
 
-export default function Card({name, src, shuffleCards}) {
+export default function Card({name, src, handleCardClick}) {
 
-    const handleCardClick = () => {
-        shuffleCards();
+    const handleClick = () => {
+        handleCardClick(name)
     }
 
     return (
-        <div className="card" onClick={handleCardClick}>
+        <div className="card" onClick={handleClick}>
             <div className="card-img-container">
                 {
                     (src)? 

@@ -31,7 +31,7 @@ function App() {
         <div><span className='color-red'>Best Score:</span> {bestScore} </div>
       </section>
 
-      <Gamespace/>
+      <Gamespace score={score} bestScore={bestScore} setScore={setScore} setBestScore={setBestScore}/>
     </>
   )
 }
