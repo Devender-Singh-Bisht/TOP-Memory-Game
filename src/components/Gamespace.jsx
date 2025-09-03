@@ -14,13 +14,18 @@ export default function Gamespace() {
     const [cards, setCards] = useState(dummyCards);
 
 
+    const shuffleCards = () => {
+        let newCards = getRandomCards(cards, 10);
+        setCards(newCards)
+    }
+
     const getRandomCards = (pokemonsData, n) => {
-        const randomNumbers = [];
         let max = pokemonsData.length;
         if (max === 0) {
             return []
         }
-
+        
+        const randomNumbers = [];
         while (randomNumbers.length < n) {
             const randomNumber = Math.floor(Math.random() * (max));
             if (!randomNumbers.includes(randomNumber)) {
@@ -63,7 +68,7 @@ export default function Gamespace() {
         </div>
         ):
         (<section className="game-space">
-            {cards.map((obj) => <Card key={obj["name"]} name={obj["name"]} src={obj["src"]} />)}
+            {cards.map((obj, index) => <Card key={(obj["name"])?(obj["name"]):(index)} name={obj["name"]} src={obj["src"]} shuffleCards={shuffleCards} />)}
         </section>)
     );
 }
@@ -94,8 +99,13 @@ async function fetchEachPokemon(pokemonArray) {
             const pokemon = await response.json();
 
             let pokemonData = {};
-            pokemonData["name"] = poke.name;
-            pokemonData["src"] = pokemon["sprites"]["other"]["dream_world"]["front_default"];
+            pokemonData["name"] = pokemon.name;
+            
+            let src = pokemon["sprites"]["other"]["dream_world"]["front_default"];
+            if (!src) {
+                src = pokemon["sprites"]["front_default"]
+            }
+            pokemonData["src"] = src
             finalPokemonData.push(pokemonData);
         }
     }
