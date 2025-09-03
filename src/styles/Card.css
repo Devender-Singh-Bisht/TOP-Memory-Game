@@ -9,6 +9,7 @@
     border: 2px solid black;
     border-radius: 20px;
     background-color: white;
+    cursor: pointer;
 }
 
 .card-img-container {
@@ -21,6 +22,11 @@
     height: 160px;
 }
 
+.pokeball-spin {
+    object-fit: contain;
+    animation: spin-ball 3s infinite;
+}
+
 .card-name {
     background-color: rgb(255, 42, 42);
     color: white;
@@ -31,5 +37,13 @@
 
 
 
+@keyframes spin-ball {
+    from {
+        transform: rotate(0deg) scale(0.5);
+    }
+    to {
+        transform: rotate(360deg) scale(0.5);
+    }
+}
 
 

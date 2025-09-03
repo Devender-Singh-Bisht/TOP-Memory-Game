@@ -9,9 +9,13 @@ export default function Card({name, src}) {
     return (
         <div className="card">
             <div className="card-img-container">
-                <img src={(!src)?(pokeball):(src)} alt={name} />
+                {
+                    (src)? 
+                    (<img src={src} alt={name}/>):
+                    (<img className="pokeball-spin" src={pokeball} alt={name}/>)
+                }
             </div>
-            <div className="card-name">{(!name)?("Loading"):(name.toUpperCase())}</div>
+            <div className="card-name">{(name)?(name.toUpperCase()):("Loading")}</div>
         </div>
     );
 }

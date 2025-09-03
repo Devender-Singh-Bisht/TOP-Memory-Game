@@ -16,9 +16,13 @@ export default function Gamespace() {
 
     const getRandomCards = (pokemonsData, n) => {
         const randomNumbers = [];
-        let max = pokemonsData.length - 1;
+        let max = pokemonsData.length;
+        if (max === 0) {
+            return []
+        }
+
         while (randomNumbers.length < n) {
-            const randomNumber = Math.floor(Math.random() * (max - 0 + 1)) + 0;
+            const randomNumber = Math.floor(Math.random() * (max));
             if (!randomNumbers.includes(randomNumber)) {
                 randomNumbers.push(randomNumber);
             }
@@ -51,11 +55,16 @@ export default function Gamespace() {
 
 
     return (
-        <section className="game-space">
-            {
-                cards.map((obj) => <Card key={obj["name"]} name={obj["name"]} src={obj["src"]} />)
-            }
-        </section>
+        (cards.length === 0)?
+        (
+        <div className="error">
+            <h1>"Something went wrong.</h1>
+            <h1>Please check your internet connection and try again.</h1>
+        </div>
+        ):
+        (<section className="game-space">
+            {cards.map((obj) => <Card key={obj["name"]} name={obj["name"]} src={obj["src"]} />)}
+        </section>)
     );
 }
 
@@ -71,16 +80,14 @@ async function fetchPokemons() {
         const pokemons = await response.json();
         return pokemons
     }
-    catch (error) {
-        console.log(error.name);
-        return null;
+    catch {
+        return {"results": []}
     }
 }
 
 
 async function fetchEachPokemon(pokemonArray) {
     let finalPokemonData = []
-    console.log(pokemonArray.length)
     try {
         for (const poke of pokemonArray) {
             const response = await fetch(poke["url"]);
@@ -92,8 +99,8 @@ async function fetchEachPokemon(pokemonArray) {
             finalPokemonData.push(pokemonData);
         }
     }
-    catch (error) {
-        console.log(error.name);
+    catch {
+        finalPokemonData = [];
     }
     return finalPokemonData;
 }
