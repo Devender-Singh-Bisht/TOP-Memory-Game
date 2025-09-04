@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from "react";
 import Card from "./Card";
+import ScorePopup from "./ScorePopUp";
 import "../styles/Gamespace.css";
 
 
@@ -93,6 +94,7 @@ export default function Gamespace({ level, score, bestScore, setScore, setBestSc
                 </div>
             ) :
             (<section className="game-space">
+                <ScorePopup score={score} level={level} />
                 {cards.map((obj, index) => <Card key={(obj["name"]) ? (obj["name"]) : (index)} name={obj["name"]} src={obj["src"]} handleCardClick={handleCardClick} />)}
             </section>)
     );

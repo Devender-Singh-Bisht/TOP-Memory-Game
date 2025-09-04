@@ -1,0 +1,25 @@
+.score-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Autour One", system-ui;
+  font-size: 15rem;
+  font-weight: bold;
+  color: Green;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+  animation: fadeUp 1s ease-out forwards;
+  z-index: 999;
+  pointer-events: none;
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -80%) scale(1.2);
+  }
+}
