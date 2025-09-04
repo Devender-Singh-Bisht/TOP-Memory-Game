@@ -26,6 +26,8 @@ function App() {
         </div>
       </section>
 
+      <div className='rules'>Get points by clicking on an image but don't click on any more than once!</div>
+
       <section className='score-card'>
         <div><span className='color-red'>Score:</span>  {score}</div>
         <div><span className='color-red'>Best Score:</span> {bestScore} </div>
