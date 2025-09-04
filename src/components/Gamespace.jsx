@@ -10,7 +10,7 @@ export default function Gamespace({ level, score, bestScore, setScore, setBestSc
 
     const [pokemonsData, setPokemonsData] = useState([]);
 
-    const dummyCards = Array(level).fill({});
+    const dummyCards = Array.from({ length: level }, () => ({ name: null, src: null }));
     const [cards, setCards] = useState(dummyCards);
     const [clickedCards, setClickedCards] = useState([]);
 
@@ -77,11 +77,13 @@ export default function Gamespace({ level, score, bestScore, setScore, setBestSc
 
 
     useEffect(() => {
-        let cardsData = getRandomCards(pokemonsData, level);
-        setCards(cardsData)
-    }, [level])
+        if (pokemonsData.length > 0) {
+            let cardsData = getRandomCards(pokemonsData, level);
+            setCards(cardsData);
+        }
+    }, [level]);
 
-    
+
     return (
         (cards.length === 0) ?
             (
