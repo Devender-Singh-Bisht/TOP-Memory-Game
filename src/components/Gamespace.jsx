@@ -81,6 +81,8 @@ export default function Gamespace({ level, score, bestScore, setScore, setBestSc
         if (pokemonsData.length > 0) {
             let cardsData = getRandomCards(pokemonsData, level);
             setCards(cardsData);
+            setScore(0);
+            setBestScore(0);
         }
     }, [level]);
 
